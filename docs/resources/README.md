@@ -17,6 +17,19 @@
 
 ## Techniques (tips and tricks)
 
+
+### Error handling
+
+- [Use Bash Strict Mode (Unless You Love Debugging)](http://redsymbol.net/articles/unofficial-bash-strict-mode/)
+- [Another Bash Strict Mode](https://disconnected.systems/blog/another-bash-strict-mode/)
+
+glennj's advise:
+
+```bash
+trap 'echo "Aborting due to errexit on line $LINENO. Exit code: $?" >&2' ERR
+```
+
+
 ### Handle command-line options (positional parameters)
 
 The day will come when you want to give arguments to your scripts. These arguments are known as positional parameters.
