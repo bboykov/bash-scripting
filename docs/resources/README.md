@@ -15,6 +15,10 @@
 [bash-pitfalls]: https://mywiki.wooledge.org/BashPitfalls
 [shellcheck]: http://www.shellcheck.net/
 
+## Good reads
+
+- [Command Line Interface Guidelines](https://clig.dev/)
+
 ## Techniques (tips and tricks)
 
 
