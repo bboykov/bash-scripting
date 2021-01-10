@@ -24,15 +24,41 @@
 
 ### Error handling
 
-- [Use Bash Strict Mode (Unless You Love Debugging)](http://redsymbol.net/articles/unofficial-bash-strict-mode/)
-- [Another Bash Strict Mode](https://disconnected.systems/blog/another-bash-strict-mode/)
-
-glennj's advise:
+#### Trap snippets:
 
 ```bash
+### glennj's useful trap
 trap 'echo "Aborting due to errexit on line $LINENO. Exit code: $?" >&2' ERR
+
+### trap to only report an error, not working within functions if the bad command is not last.
+trap 'echo "Error on line $LINENO. Exit code: $?" >&2' ERR
+
+### Trap to exit on error exit code, , not working within functions if the bad command is not last
+trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
+
+### set exit-on-error mode (set -e), trap the exit signal instead of the error
+### Useful for cleaning up in case of error
+set -e
+trap 'catch $? $LINENO' EXIT
+catch() {
+  echo "catching!"
+  if [ "$1" != "0" ]; then
+    # error handling goes here
+    echo "Error $1 occurred on $2"
+  fi
+}
 ```
 
+Reads:
+
+[Sending and Trapping Signals](https://mywiki.wooledge.org/SignalTrap)
+
+Bash strict mode(read all of them):
+
+- [Use Bash Strict Mode (Unless You Love Debugging)](http://redsymbol.net/articles/unofficial-bash-strict-mode/)
+- [Another Bash Strict Mode](https://disconnected.systems/blog/another-bash-strict-mode/)
+- [Bash strict mode and why you should care](https://olivergondza.github.io/2019/10/01/bash-strict-mode.html)
+- [The Bash Trap Trap](The Bash Trap Trap)
 
 ### Handle command-line options (positional parameters)
 
