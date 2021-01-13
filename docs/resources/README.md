@@ -38,7 +38,7 @@ trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
 
 ### set exit-on-error mode (set -e), trap the exit signal instead of the error
 ### Useful for cleaning up in case of error
-set -e
+set -Ee
 trap 'catch $? $LINENO' EXIT
 catch() {
   echo "catching!"
@@ -59,6 +59,7 @@ Bash strict mode(read all of them):
 - [Another Bash Strict Mode](https://disconnected.systems/blog/another-bash-strict-mode/)
 - [Bash strict mode and why you should care](https://olivergondza.github.io/2019/10/01/bash-strict-mode.html)
 - [The Bash Trap Trap](The Bash Trap Trap)
+- [Bash Error Handling with Trap](https://citizen428.net/blog/bash-error-handling-with-trap/)
 
 ### Handle command-line options (positional parameters)
 
