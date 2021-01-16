@@ -50,6 +50,24 @@ util::require_bash_version() {
 
 #######################################
 # Description:
+#   Evaluate an arithmetic expression.
+#   If it results in non-zero (or false), error and exit.
+# Usage:
+#   util::assert "$# > 0" "Provide at least one argument"
+# Globals:
+#   None
+# Arguments:
+#   first: arithmetic expression
+#   second: Message to print in case of false result.
+# Outputs:
+#  If it results in false print error message and exit.
+#######################################
+util::assert() {
+  (($1)) || util::die "$2"
+}
+
+#######################################
+# Description:
 #   Execute a command and print to standard error. The command is expected to
 #   print a message and should typically be either `echo`, `printf`, or `cat`.
 #
