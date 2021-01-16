@@ -130,3 +130,23 @@ str::is_float() {
   [[ $1 == ?([-+])+([[:digit:]])?(.*([[:digit:]])) ]] ||
     [[ $1 == ?([-+])*([[:digit:]]).+([[:digit:]]) ]]
 }
+
+#######################################
+# Description:
+#   Function to be used in a trap to exit on error.
+# Usage:
+#   set -Euo pipefail             ### Set -E to catch errors in functions
+#   source functions.bash         ### source the library
+#   trap trap::exit_on_error ERR  ### Call the function in the trap
+# Globals:
+#   None
+# Arguments:
+#   None
+# Outputs:
+#   Prints the line and the command and exits with the command exit code
+#######################################
+trap::exit_on_error() {
+  local status=$?
+  echo "$0: Error on line $LINENO: $BASH_COMMAND"
+  exit ${status}
+}
