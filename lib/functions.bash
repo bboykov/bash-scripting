@@ -28,22 +28,29 @@ util::die() {
 #######################################
 # Description:
 #  Check the bash version and exit if the version is less than required.
-#   e.g.: util::require_bash_version 4.3
+# Usage:
+#   util::require_bash_version 4.3
+#   util::require_bash_version 4.0 "assosiative arrays"
 # Globals:
 #   BASH_VERSINFO buildin
 #   BASH_VERSION buildin
 # Arguments:
-#   Version number in <major>.<minor> form
+#   $1: Required. Version number in <major>.<minor> form
+#   $2: Optional. Add required for feature to the error message.
 # Outputs:
 #   None
 #######################################
 util::require_bash_version() {
+  local version=${1}
+  local feature=${2:-"this script to work properly."}
   local -i major minor
-  IFS=. read -r major minor <<<"$1"
+  IFS=. read -r major minor <<<"${version}"
 
   if ((BASH_VERSINFO[0] < major)) ||
     ((BASH_VERSINFO[0] == major && BASH_VERSINFO[1] < minor)); then
-    util::die "Bash version $1 is required this is $BASH_VERSION"
+
+    util::die "This is $BASH_VERSION. Bash version $1 is required for ${feature}"
+
   fi
 
 }
