@@ -58,7 +58,7 @@ Bash strict mode(read all of them):
 - [Use Bash Strict Mode (Unless You Love Debugging)](http://redsymbol.net/articles/unofficial-bash-strict-mode/)
 - [Another Bash Strict Mode](https://disconnected.systems/blog/another-bash-strict-mode/)
 - [Bash strict mode and why you should care](https://olivergondza.github.io/2019/10/01/bash-strict-mode.html)
-- [The Bash Trap Trap](The Bash Trap Trap)
+- [The Bash Trap Trap](https://medium.com/@dirk.avery/the-bash-trap-trap-ce6083f36700)
 - [Bash Error Handling with Trap](https://citizen428.net/blog/bash-error-handling-with-trap/)
 
 ### Handle command-line options (positional parameters)
